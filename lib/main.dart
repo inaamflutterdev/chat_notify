@@ -1,8 +1,12 @@
-import 'package:chat_notify/pages/auth/login_or_signup.dart';
+import 'package:chat_notify/firebase_options.dart';
+import 'package:chat_notify/services/auth/auth_gate.dart';
 import 'package:chat_notify/themes/light_theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const LoginOrSignup(),
+      home: const AuthGate(),
       theme: lightMode,
     );
   }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "962396377751",
+    "project_id": "chatnotify-784",
+    "storage_bucket": "chatnotify-784.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962396377751:android:0cdaf85704908babb98fd2",
+        "android_client_info": {
+          "package_name": "com.example.chat_notify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCzYozRIiMOz_LlwUz4YQMhJqxNJDFZZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
