@@ -6,13 +6,13 @@ import 'package:chat_notify/widgets/home_widgets/my_drawer.dart';
 import 'package:chat_notify/widgets/home_widgets/user_tile.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   final ChatService chatService = ChatService();
   final AuthService authService = AuthService();
   late String currentUserEmail = ""; // Initialize with an empty string
