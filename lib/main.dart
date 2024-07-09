@@ -1,4 +1,4 @@
-import 'package:chat_notify/pages/auth/login.dart';
+import 'package:chat_notify/pages/auth/login_or_signup.dart';
 import 'package:chat_notify/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: LoginPage(),
+      home: const LoginOrSignup(),
       theme: lightMode,
     );
   }

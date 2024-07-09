@@ -1,11 +1,13 @@
-import 'package:chat_notify/widgets/login_widgets/myTextField.dart';
+import 'package:chat_notify/widgets/login_widgets/my_textfield.dart';
 import 'package:chat_notify/widgets/login_widgets/my_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
-  LoginPage({super.key});
+  final void Function()? onTap;
+  LoginPage({required this.onTap, super.key});
 
   void login() {}
 
@@ -59,24 +61,27 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               height: screenHeight * 0.035,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Not a member? ",
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
+            GestureDetector(
+              onTap: onTap,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Not a member? ",
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
-                ),
-                Text(
-                  "Register now",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
+                  Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
-                ),
-              ],
-            )
+                ],
+              ),
+            ),
           ],
         ),
       ),
