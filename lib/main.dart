@@ -1,4 +1,5 @@
-import 'package:chat_notify/pages/login.dart';
+import 'package:chat_notify/pages/auth/login.dart';
+import 'package:chat_notify/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,12 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomePage(),
+      home: LoginPage(),
+      theme: lightMode,
     );
   }
 }
