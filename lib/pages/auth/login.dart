@@ -1,5 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
-import 'package:chat_notify/services/auth_service.dart';
+import 'package:chat_notify/services/auth/auth_service.dart';
 import 'package:chat_notify/widgets/login_widgets/my_textfield.dart';
 import 'package:chat_notify/widgets/login_widgets/my_button.dart';
 import 'package:flutter/material.dart';

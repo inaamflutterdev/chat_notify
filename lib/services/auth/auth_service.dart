@@ -1,37 +1,68 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
-  // instance  of auth
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  // sign in
-  Future<UserCredential> signInWithEmailPassword(String email, password) async {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  // Sign in with email and password
+  Future<UserCredential> signInWithEmailPassword(
+      String email, String password) async {
     try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      // Save user info if it doesn't already exist
+      await _saveUserInfo(userCredential.user!.uid, email);
+
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw Exception(e.code);
     }
   }
 
-  // sign up
-  Future<UserCredential> signUpWithEmailPassword(String email, password) async {
+  // Sign up with email and password
+  Future<UserCredential> signUpWithEmailPassword(
+      String email, String password) async {
     try {
-      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      // Save user info if it doesn't already exist
+      await _saveUserInfo(userCredential.user!.uid, email);
+
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw Exception(e.code);
     }
   }
 
-  // sign out
+  // Sign out
   Future<void> signOut() async {
-    return await auth.signOut();
+    await _auth.signOut();
   }
-  // errors
+
+  // Get current user's email
+  Future<String?> getCurrentUserEmail() async {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      DocumentSnapshot<Map<String, dynamic>> snapshot =
+          await _firestore.collection("Users").doc(user.uid).get();
+      return snapshot.exists ? snapshot.data()!['email'] : null;
+    }
+    return null;
+  }
+
+  // Private method to save user info in Firestore
+  Future<void> _saveUserInfo(String uid, String email) async {
+    await _firestore.collection("Users").doc(uid).set({
+      'uid': uid,
+      'email': email,
+    });
+  }
 }
