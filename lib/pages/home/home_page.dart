@@ -33,8 +33,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text("Home", style: TextStyle(color: Colors.white)),
+        title: const Text("Home"),
         centerTitle: true,
       ),
       drawer: const MyDrawer(),
@@ -72,7 +71,8 @@ class HomePageState extends State<HomePage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => ChatPage(
-                      recieverEmail: userData["email"],
+                      receiverEmail: userData["email"],
+                      receiverID: userData["uid"],
                     ),
                   ),
                 );
